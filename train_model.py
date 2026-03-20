@@ -1,0 +1,15 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+data = pd.read_csv("sign_dataset.csv")
+
+X = data.drop("label", axis=1)
+y = data["label"]
+
+model = RandomForestClassifier()
+model.fit(X, y)
+
+joblib.dump(model, "sign_model.pkl")
+
+print("MODEL TRAINED & SAVED")
